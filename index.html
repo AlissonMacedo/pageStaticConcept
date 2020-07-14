@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="particles-js">
+      <div class="wrap">
+        <h1 id="header" class="teste"></h1>
+        <p id="subheader" class="teste2"></p>
+        <div id="headerSocial" style="display: none;">
+          {% include socials.html %}
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./particles.js"></script>
+  <script src="./app.js"></script>
+
+  <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+  <script>
+    var header = document.getElementById("header");
+    var subheader = document.getElementById("subheader");
+
+    var typewriter = new Typewriter(header, {
+      loop: false,
+    });
+
+    var typewriter2 = new Typewriter(subheader, {
+      loop: false,
+    });
+
+    let header1 = "Olá, eu sou Alisson Macedo.";
+    let header2 = "um Dev Full Stack JavaScript";
+    // let header3 = "Desenvolvedor";
+    let header4 = "Apaixonado por tecnologia.";
+    let header5 = "Confira meu trabalho.";
+
+    let subHeader1 = "Que bom ver você por aqui.";
+    // let subHeader2 = "Sou apaixonado pelo ecoSistema JavaScript...";
+    let subHeader2 = "ReactJs e React-Native, NodeJS ...";
+    let subHeader4 = "Javascript, TypeScript, HTML, CSS, entre outras...";
+    let subHeader5 = "Veja alguns projetos que tenho trabalhado.";
+
+    let typingSpeed = 10;
+    let deleteSpeed = 1;
+    let pauseDelay = 3000;
+
+    function subtyping(string) {
+      typewriter2.changeDelay(typingSpeed).typeString(string).start();
+    }
+
+    function subdelete() {
+      typewriter2.deleteAll(1).start();
+    }
+
+    function finaltype() {
+      jQuery("#subheader").hide();
+      jQuery("#headerSocial").fadeIn();
+    }
+
+    function typing() {
+      typewriter
+        .changeDelay(typingSpeed)
+        .changeDeleteSpeed(deleteSpeed)
+
+        .typeString(header1)
+        .callFunction(function () {
+          subtyping(subHeader1);
+        })
+        .pauseFor(pauseDelay)
+        .callFunction(function () {
+          subdelete();
+        })
+        .pauseFor(subHeader1.length * deleteSpeed)
+        .deleteChars(15)
+
+        .typeString(header2)
+        .callFunction(function () {
+          subtyping(subHeader2);
+        })
+        .pauseFor(pauseDelay)
+        .callFunction(function () {
+          subdelete();
+        })
+        .pauseFor(subHeader2.length * deleteSpeed)
+        .deleteChars(25)
+
+        // .typeString(header3)
+        // .callFunction(function () {
+        //   subtyping(subHeader3);
+        // })
+        // .pauseFor(pauseDelay)
+        // .callFunction(function () {
+        //   subdelete();
+        // })
+        // .pauseFor(subHeader3.length * deleteSpeed)
+        // .deleteChars(13)
+
+        .typeString(header4)
+        .callFunction(function () {
+          subtyping(subHeader4);
+        })
+        .pauseFor(pauseDelay)
+        .callFunction(function () {
+          subdelete();
+        })
+        .pauseFor(subHeader4.length * deleteSpeed)
+        .deleteAll(1)
+
+        .typeString(header5)
+        .callFunction(function () {
+          finaltype();
+        })
+        .start();
+    }
+
+    typing();
+  </script>
+</html>
